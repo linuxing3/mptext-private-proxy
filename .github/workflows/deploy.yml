@@ -19,11 +19,8 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Install Wrangler
-        run: npm install -g wrangler@latest
-
-      - name: Deploy to Cloudflare Workers
-        run: npx wrangler deploy
+      - name: Deploy Worker
+        run: npx wrangler@latest deploy src/index.js --name mptext-private-proxy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
